@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.parent-container {
+    position: relative;
+    height: auto; /* Allow height to adjust */
+    overflow: visible; /* Ensure content is not clipped */
+}
+
+/* sidebar */
+aside {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: start; /* Start at the top */
+    align-items: stretch; /* Stretch to container width */
+    height: 100vh;
+    overflow-y: auto; /* Scrollbar if needed */
+}
+
