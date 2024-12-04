@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
+</head>
+<body>
+    <div class="login-container">
+        <div class="background-image"></div>
+        <div class="half-circle"></div>
+        <div class="top-logo-container">
+            <img src="assets/assistify.png" alt="Assistify Logo" class="top-logo">
+            <h2 class="system-title">Working Scholar Management System</h2>
+        </div>
+        <div class="kcp-logo-container">
+            <img src="assets/kcp-logo.png" alt="Middle Logo" class="middle-logo">
+        </div>
+        <div class="login-box">
+            <h1 class="title">Login</h1>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="email" class="input-label">Email</label>
+                    <input type="email" id="email" placeholder="Email" class="input-field" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="input-label">Password</label>
+                    <input type="password" id="password" placeholder="Password" class="input-field" required>
+                </div>
+                
+                <button type="submit" class="login-button">Login</button>
+                <a href="/src/auth/supervisorregister/" class="register-link">Register here</a>
+            </form>            
+        </div>
+        
+    </div>
+
+    <script>
+        
+
+
+        // Handle login form submission
+        $('#login-form').on('submit', function (e) {
+            e.preventDefault(); // Prevent form from reloading the page
+            
+            // Disable the button to prevent multiple submissions
+            $('.login-button').prop('disabled', true).text('Logging in...');
+            
+            // Gather form data
+            const email = $('#email').val();
+            const password = $('#password').val();
+            
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:8000/api/supervisors/login', // Update with your API endpoint
+                data: {
+                    email: email,
+                    password: password
+                },
+                success: function (response) {
+                    console.log(response); // Log the success response
+                    
+                    // Save the 'id' and 'role' to cookies
+                    document.cookie = "supervisor_id=" + response.data.id + "; path=/; SameSite=Lax";
+                    document.cookie = "supervisor_role=" + response.data.role + "; path=/; SameSite=Lax";
+                    
+                    // Show success message and redirect
+                    alert('Login successful!');
+                    window.location.href = "/src/tabs/supervisor_dashboard/"; // Redirect to the dashboard
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Login failed. Please check your credentials and try again.');
+                },
+                complete: function () {
+                    // Re-enable the button after completion
+                    $('.login-button').prop('disabled', false).text('Login');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Supervisor</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
+    <script src="https://raw.githubusercontent.com/js-cookie/js-cookie/master/dist/js.cookie.min.js"></script>
+</head>
+<body>
+    <div class="register-container">
+        <div class="background-image"></div>
+        <div class="half-circle"></div>
+        <div class="top-logo-container">
+            <img src="assets/assistify.png" alt="Assistify Logo" class="top-logo">
+            <h2 class="system-title">Working Scholar Management System</h2>
+        </div>
+        <div class="kcp-logo-container">
+            <img src="assets/kcp-logo.png" alt="Middle Logo" class="middle-logo">
+        </div>
+        <div class="register-box">
+            <h1 class="title">Register Supervisor</h1>
+            <form id="register-form" class="register-form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-column">
+                            <label for="firstname" class="input-label">Firstname</label>
+                            <input type="text" id="firstname" placeholder="Firstname" class="input-field" required>
+                        </div>
+                        <div class="input-column">
+                            <label for="lastname" class="input-label">Lastname</label>
+                            <input type="text" id="lastname" placeholder="Lastname" class="input-field" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-column department-column">
+                        <label for="department" class="input-label">Department</label>
+                        <select id="department" class="input-field" required>
+                            <option value="CIT">College of Information Technology</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-column">
+                        <label for="email" class="input-label">Email</label>
+                        <input type="email" id="email" placeholder="Email" class="input-field" required>
+                    </div>
+                    <div class="input-column">
+                        <label for="password" class="input-label">Password</label>
+                        <input type="password" id="password" placeholder="Password" class="input-field" required>
+                    </div>
+                </div>
+                <button type="submit" class="register-button">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // jQuery AJAX to send POST request
+        $('#register-form').on('submit', function(e) {
+            e.preventDefault(); // Prevent the form from reloading the page
+            
+            // Get the form data
+            var firstname = $('#firstname').val();
+            var lastname = $('#lastname').val();
+            var email = $('#email').val();
+            var password = $('#password').val();
+            var department = $('#department').val();
+            
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:8000/api/supervisors',
+                data: {
+                    'first_name': firstname,
+                    'last_name': lastname,
+                    'email': email,
+                    'password': password,
+                    'role': 'supervisor',  // You can change this as per the actual role
+                    'department': department
+                },
+                success: function(data) {
+                    console.log(data); // Log the success response
+                    console.log(data.data.id, data.data.role); // Log the success response
+
+                    // Save the 'id' and 'role' to cookies
+                    document.cookie = "supervisor_id=" + data.data.id + "; path=/; SameSite=Lax";
+                    document.cookie = "supervisor_role=" + data.data.role + "; path=/; SameSite=Lax";
+
+                    // You can show a success message or redirect the user
+                    alert("Supervisor registered successfully!");
+                    window.location.href = "/src/tabs/supervisor_dashboard/"; // Redirect to another page if necessary
+                    
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert("Error registering supervisor. Please try again.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

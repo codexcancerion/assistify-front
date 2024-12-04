@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="background-image"></div>
+        <div class="half-circle"></div>
+        <div class="top-logo-container">
+            <img src="assets/assistify.png" alt="Assistify Logo" class="top-logo">
+            <h2 class="system-title">Working Scholar Management System</h2>
+        </div>
+        <div class="kcp-logo-container">
+            <img src="assets/kcp-logo.png" alt="Middle Logo" class="middle-logo">
+        </div>
+        <div class="dashboard-box">
+            <h1 class="title">Welcome to Your Dashboard</h1>
+            <div class="student-info">
+                <p><strong>First Name:</strong> <span id="first_name"></span></p>
+                <p><strong>Last Name:</strong> <span id="last_name"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Student ID:</strong> <span id="student_id"></span></p>
+                <p><strong>Department:</strong> <span id="department"></span></p>
+            </div>
+        </div>
+    </div>
+    <form id="logout-form">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+
+    <script>
+        $('#logout-form').on('submit', function (e) {
+            e.preventDefault(); // Prevent form from reloading the page
+
+            document.cookie = "student_id=" + "" + "; path=/; SameSite=Lax";
+            document.cookie = "student_role=" + "" + "; path=/; SameSite=Lax";
+
+            window.location.reload()
+        });
+
+        // Function to get a cookie by name
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(';');
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookie = cookieArr[i].trim();
+                if (cookie.indexOf(name + '=') == 0) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        // Get the student's ID from the cookies
+        var studentId = getCookie("student_id");
+
+        if (studentId) {
+            // Make a GET request to retrieve the student's data using the ID
+            $.ajax({
+                type: 'GET',
+                url: 'http://127.0.0.1:8000/api/students/' + studentId,
+                success: function(data) {
+                    // Populate the student's data on the page
+                    $('#first_name').text(data.first_name);
+                    $('#last_name').text(data.last_name);
+                    $('#email').text(data.email);
+                    $('#student_id').text(data.student_id);
+                    $('#department').text(data.department);  // Assuming you have a department field in the response
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert("Error loading student data.");
+                }
+            });
+        } else {
+            alert("No student data found in cookies. Please log in again.");
+            window.location.href = '/studentlogin'; // Redirect to login page if no cookie is found
+        }
+    </script>
+</body>
+
+</html>

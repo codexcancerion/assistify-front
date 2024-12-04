@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link href="../dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body class="bg-white-100 font-sans">
+
+    <div class="flex h-screen">
+        <!-- Sidebar ----------------------------------------------------------------------------------->
+
+        <aside class="bg-[#f5f5f5] text-[#004a6d] w-64 p-6 h-full flex flex-col fixed md:static">
+            <!-- Logo -->
+            <h1 class="text-5xl font-bold mb-6" style="font-family: 'Baloo 2', sans-serif;">
+                <span style="color: #289DD2;">assist</span><span style="color: #e29830;">ify</span>
+            </h1>
+
+            <!-- Navigation -->
+            <nav class="flex-grow">
+                <ul>
+                    <!-- Home -->
+                    <li class="mb-4 flex items-center">
+                        <svg class="h-6 w-6 text-[#289DD2] mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <a href="index.html" class="hover:text-gray-600" title="Home">Home</a>
+                    </li>
+
+                    <!-- DTR -->
+                    <li class="mb-4 flex items-center">
+                        <svg class="h-6 w-6 text-[#289DD2] mr-2" width="24" height="24" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z"></path>
+                            <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2">
+                            </path>
+                            <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                        </svg>
+                        <a href="dtr.html" class="hover:text-gray-600" title="Daily Time Record">DTR</a>
+                    </li>
+
+                    <!-- Tasks -->
+                    <li class="mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <rect width="24" height="24" fill="none" />
+                            <g fill="none" fill-rule="evenodd">
+                                <path
+                                    d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+                                <path fill="#289DD2"
+                                    d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 2h14v14H5zm11.95 4.795a1 1 0 1 0-1.414-1.414l-4.95 4.95l-2.121-2.121a1 1 0 0 0-1.415 1.414l2.758 2.758a1.1 1.1 0 0 0 1.556 0z" />
+                            </g>
+                        </svg>
+                        <a href="tasks.html" class="hover:text-gray-600" title="Tasks">Tasks</a>
+                    </li>
+
+                    <!-- Payroll -->
+                    <li class="mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <rect width="24" height="24" fill="none" />
+                            <g fill="none">
+                                <path stroke="#289DD2" stroke-width="1.5"
+                                    d="M4.318 20.536C5.636 22 7.758 22 12 22s6.364 0 7.682-1.465C21 19.072 21 16.714 21 12s0-7.071-1.318-8.536S16.242 2 12 2S5.636 2 4.318 3.464C3 4.93 3 7.286 3 12s0 7.071 1.318 8.535Z" />
+                                <path stroke="#289DD2" stroke-width="1.5"
+                                    d="M7 8c0-.465 0-.697.051-.888a1.5 1.5 0 0 1 1.06-1.06C8.304 6 8.536 6 9 6h6c.465 0 .697 0 .888.051a1.5 1.5 0 0 1 1.06 1.06C17 7.304 17 7.536 17 8s0 .697-.051.888a1.5 1.5 0 0 1-1.06 1.06C15.697 10 15.464 10 15 10H9c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C7 8.696 7 8.464 7 8Z" />
+                                <circle cx="8" cy="13" r="1" fill="#289DD2" />
+                                <circle cx="8" cy="17" r="1" fill="#289DD2" />
+                                <circle cx="12" cy="13" r="1" fill="#289DD2" />
+                                <circle cx="12" cy="17" r="1" fill="#289DD2" />
+                                <circle cx="16" cy="13" r="1" fill="#289DD2" />
+                                <circle cx="16" cy="17" r="1" fill="#289DD2" />
+                            </g>
+                        </svg>
+                        <a href="payroll.html" class="hover:text-gray-600" title="Payroll">Payroll</a>
+                    </li>
+
+                    <!-- Profile -->
+                    <div class="bg-gray-100 flex justify-left items-center h-screen mb-12">
+                        <ul class="mb-4 flex flex-col items-start">
+                            <li class="mb-4 flex items-center relative">
+                                <ul id="dropdown"
+                                    class="absolute left-0 bottom-full mb-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg hidden">
+                                    <li>
+                                        <a href="tabs/student_dashboard/student-profile.html"
+                                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Student's
+                                            Profile</a>
+                                    </li>
+                                    <li id="supervisorProfileLink">
+                                        <a href="tabs/supervisor_dashboard/index.html"
+                                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Supervisor's
+                                            Profile</a>
+                                    </li>
+                                    <li id="osasProfileLink">
+                                        <a href="tabs/osas-profile.html"
+                                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">OSAS Profile</a>
+                                    </li>
+                                </ul>
+
+                                <button onclick="toggleDropdown()"
+                                    class="flex items-center px-4 py-2 bg-transparent text-gray-500 hover:text-green-500 transition duration-300">
+                                    <svg class="h-6 w-6 text-[#289DD2] mr-2" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.87 0-7 3.13-7 7h14c0-3.87-3.13-7-7-7z" />
+                                    </svg>
+                                    <span>Profile</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <script>
+                        const userRole = 'supervisor';
+                        function toggleDropdown() {
+                            const dropdown = document.getElementById('dropdown');
+                            dropdown.classList.toggle('hidden');
+                        }
+
+                        if (userRole === 'student') {
+                            const supervisorLink = document.getElementById('supervisorProfileLink', 'osasProfileLink');
+                            supervisorLink.style.display = 'none';
+                            osasProfileLink.style.display = 'none';
+                        }
+
+                        document.addEventListener('click', function (event) {
+                            const dropdown = document.getElementById('dropdown');
+                            const button = event.target.closest('button');
+                            const dropdownContainer = event.target.closest('#dropdown');
+
+                            if (!button && !dropdownContainer) {
+                                dropdown.classList.add('hidden');
+                            }
+                        });
+                    </script>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Section -->
+        <div class="flex-1 p-6">
+            <!-- Welcome Section -->
+            <div class="bg-[#289dd2] text-white rounded-lg p-10 mb-6">
+                <h2 class="text-5xl font-bold" style="font-family: 'Baloo 2', sans-serif;">Welcome Student!</h2>
+                <p class="text-xl" style="font-family: 'Baloo 2', sans-serif;">The Quick Brown Fox</p>
+                <p class="mt-2" style="font-family: 'Montserrat', sans-serif;">The quick brown fox jumps over the head
+                    of the lazy dog.</p>
+            </div>
+
+            <!-- Daily Time Record Section -->
+            <div class="bg-[#ededed] shadow rounded-lg p-10 mb-6">
+                <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">Daily
+                    Time Record</h3>
+                <p class="font-bold mb-4 text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">This Week</p>
+                <div class="flex items-center justify-between">
+                    <div class="grid grid-cols-5 gap-4 text-center">
+                        <div>Monday<br><span class="text-[#289dd2]">4 Hours</span></div>
+                        <div>Tuesday<br><span class="text-[#289dd2]">4 Hours</span></div>
+                        <div>Wednesday<br><span class="text-[#289dd2]">4 Hours</span></div>
+                        <div>Thursday<br><span class="text-[#289dd2]">4 Hours</span></div>
+                        <div class="text-[#e29830]">Friday<br><span class="text-[#289dd2]">0 Hours</span></div>
+                    </div>
+                    <div>
+                        <p class="text-xl text-[#004A6D] font-bold" style="font-family: 'Baloo 2', sans-serif;"
+                            id="current-time">
+                            <!-- The current time will be displayed here -->
+                        </p>
+                        <p>Current Time</p>
+                        <button id="log-in-button"
+                            class="bg-yellow-500 text-white text-3xl font-bold px-20 py-9 rounded-lg"
+                            style="font-family: 'Baloo 2', sans-serif;">
+                            Log In
+                        </button>
+                        <p id="logged-time" class="mt-4 text-lg text-[#004A6D]"
+                            style="font-family: 'Montserrat', sans-serif;"></p>
+                    </div>
+
+                    <script>
+                        function getCurrentTime() {
+                            const currentDate = new Date();
+                            let hours = currentDate.getHours();
+                            let minutes = currentDate.getMinutes();
+                            const ampm = hours >= 12 ? 'pm' : 'am';
+                            hours = hours % 12 || 12;
+                            minutes = minutes < 10 ? '0' + minutes : minutes;
+                            return `${hours}:${minutes} ${ampm}`;
+                        }
+
+                        // Function to handle the Log In button click
+                        document.getElementById('log-in-button').addEventListener('click', function () {
+                            const loginTime = getCurrentTime();
+                            document.getElementById('logged-time').textContent = `You logged in at: ${loginTime}`;
+                            document.getElementById('current-time').textContent = loginTime;
+                        });
+
+                        document.getElementById('current-time').textContent = getCurrentTime();
+                        setInterval(() => {
+                            document.getElementById('current-time').textContent = getCurrentTime();
+                        }, 10000);
+                    </script>
+
+                </div>
+            </div>
+
+            <!-- Tasks Section -->
+            <div class="bg-[#ededed] shadow rounded-lg p-10 mb-6">
+                <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">
+                    Tasks
+                </h3>
+                <table class="w-full text-left table-auto">
+                    <thead>
+                        <tr class="text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">
+                            <th class="border-b-2 border-gray-300 pb-2 px-4">Task</th>
+                            <th class="border-b-2 border-gray-300 pb-2 px-4">Description</th>
+                            <th class="border-b-2 border-gray-300 pb-2 px-4">Deadline</th>
+                            <th class="border-b-2 border-gray-300 pb-2 px-4">Priority</th>
+                            <th class="border-b-2 border-gray-300 pb-2 px-4">Status</th>
+                            <th class="border-b-2 border-gray-300 pb-2 px-4"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
+                                Do this task
+                            </td>
+                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
+                                The quick brown fox jumps over the head of the lazy dog
+                            </td>
+                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
+                                11/19/2024
+                            </td>
+                            <td class="bg-red-400 py-2 px-4 rounded-lg text-white"
+                                style="font-family: 'Montserrat', sans-serif;">
+                                High
+                            </td>
+                            <td class="bg-orange-400 py-2 px-4 rounded-lg text-white"
+                                style="font-family: 'Montserrat', sans-serif;">
+                                Undone
+                            </td>
+                            <td class="py-2 px-4">
+                                <button
+                                    class="bg-blue-500 text-white px-4 py-1 rounded transition-colors duration-300 hover:bg-blue-600"
+                                    style="font-family: 'Montserrat', sans-serif;">
+                                    Mark Done
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Repeat rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- Payroll Calculator Section -->
+            <div class="bg-[#ededed] shadow rounded-lg p-10">
+                <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">Payroll
+                    Calculator</h3>
+                <div class="px-10 flex justify-between">
+                    <div>
+                        <p class="text-4xl text-center text-yellow-500 font-bold"
+                            style="font-family: 'Baloo 2', sans-serif;">25 h.</p>
+                        <p class="font-bold text-center text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">
+                            Total Hours Worked</p>
+                        <p class="text-center text-[#004A6D]" style="font-family: 'Montserrat', sans-serif;">Based on
+                            ---</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl text-center text-yellow-500 font-bold"
+                            style="font-family: 'Baloo 2', sans-serif;">₱1,250.00</p>
+                        <p class="font-bold text-center text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">
+                            Total Accumulated Payroll</p>
+                        <p class="text-center text-[#004A6D]" style="font-family: 'Montserrat', sans-serif;">Based on
+                            ---</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

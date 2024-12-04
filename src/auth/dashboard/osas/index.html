@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSAS Dashboard</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Add jQuery -->
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="background-image"></div>
+        <div class="half-circle"></div>
+        <div class="top-logo-container">
+            <img src="assets/assistify.png" alt="Assistify Logo" class="top-logo">
+            <h2 class="system-title">Working Scholar Management System</h2>
+        </div>
+        <div class="kcp-logo-container">
+            <img src="assets/kcp-logo.png" alt="Middle Logo" class="middle-logo">
+        </div>
+        <div class="dashboard-box">
+            <h1 class="title">Welcome to Your Dashboard</h1>
+            <div class="osas-info">
+                <p><strong>Name:</strong> <span id="name"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Role:</strong> <span id="role"></span></p>
+            </div>
+        </div>
+    </div>
+    <form id="logout-form">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+
+    <script>
+        // Logout functionality
+        $('#logout-form').on('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            // Clear the OSAS ID cookie
+            document.cookie = "osas_id=; path=/; SameSite=Lax; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+
+            // Reload the page or redirect to the login page
+            window.location.href = '/osaslogin';
+        });
+
+        // Function to get a cookie by name
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(';');
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookie = cookieArr[i].trim();
+                if (cookie.indexOf(name + '=') === 0) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        // Get the OSAS ID from the cookies
+        var osasId = getCookie("osas_id");
+
+        if (osasId) {
+            // Make a GET request to retrieve the OSAS data using the ID
+            $.ajax({
+                type: 'GET',
+                url: 'http://127.0.0.1:8000/api/osas/' + osasId,
+                success: function(data) {
+                    // Populate the OSAS data on the page
+                    $('#name').text(data.name);
+                    $('#email').text(data.email);
+                    $('#role').text(data.role);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert("Error loading OSAS data.");
+                }
+            });
+        } else {
+            alert("No OSAS data found in cookies. Please log in again.");
+            window.location.href = '/osaslogin'; // Redirect to login page if no cookie is found
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSAS Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="background-image"></div>
+        <div class="half-circle"></div>
+        <div class="top-logo-container">
+            <img src="assets/assistify.png" alt="Assistify Logo" class="top-logo">
+            <h2 class="system-title">Working Scholar Management System</h2>
+        </div>
+        <div class="kcp-logo-container">
+            <img src="assets/kcp-logo.png" alt="Middle Logo" class="middle-logo">
+        </div>
+        <div class="login-box">
+            <h1 class="title">OSAS Login</h1>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email" class="input-label">Email</label>
+                    <input type="email" id="email" placeholder="Email" class="input-field" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="input-label">Password</label>
+                    <input type="password" id="password" placeholder="Password" class="input-field" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            <p id="success-message" class="success-message"></p>
+            <p id="error-message" class="error-message"></p>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission
+        $('#login-form').on('submit', function (e) {
+            e.preventDefault(); // Prevent form from reloading the page
+
+            const email = $('#email').val();
+            const password = $('#password').val();
+
+            // Perform the POST request for login
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:8000/api/osas/login', // Adjust URL to match your login endpoint
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    email: email,
+                    password: password
+                }),
+                success: function (response) {
+                    // Store the OSAS ID in a cookie
+                    document.cookie = "osas_id=" + response.data.id + "; path=/; SameSite=Lax";
+
+                    $('#success-message').text("Login successful! Redirecting...").show();
+                    $('#error-message').hide();
+
+                    // Redirect to dashboard or desired page
+                    window.location.href = "/dashboard";
+                },
+                error: function (xhr, status, error) {
+                    const errorMessage = xhr.responseJSON?.message || "Invalid credentials. Please try again.";
+                    $('#error-message').text(errorMessage).show();
+                    $('#success-message').hide();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,369 @@
+/* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "sans-serif", "montserrat";
+    background-color: #f0f0f0;
+}
+
+/* Home Section */
+.home-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/image 2.jpg') no-repeat center center/cover;
+    z-index: -2;
+}
+
+.background-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: -1;
+}
+
+.half-circle {
+    position: absolute;
+    top: 380px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 800px;
+    background-color: #004a6e;
+    border-top-left-radius: 1500px;
+    border-top-right-radius: 1500px;
+    z-index: 0;
+}
+
+.top-logo-container {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.top-logo {
+    width: 550px;
+    margin-bottom: 10px;
+}
+
+.system-title {
+    color: #289DD2;
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.content-container {
+    text-align: center;
+    z-index: 1;
+    color: #004a6e;
+}
+
+.kcp-logo-container {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.kcp-logo-container .middle-logo {
+    width: 150px;
+    margin: 0 auto;
+}
+
+.tagline {
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.button-container {
+    margin-top: 150px;
+}
+
+.role-button {
+    font-size: 30px;
+    color: #004A6D;
+    background-color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 80px 150px;
+    margin: 0 50px;
+    cursor: pointer;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.role-button:hover {
+    background-color: #004a6e;
+    transform: scale(1.1);
+    color: white;
+}
+
+.orange-text {
+    color: #FFA500;
+}
+
+/* Info Section */
+.info-section {
+    position: relative;
+    margin-top: -100px; /* Adjust to overlap slightly with the circle */
+    background-color: transparent; /* Transparent background */
+    padding: 50px 20px;
+    color: #004A6D;
+    text-align: center;
+    z-index: 1;
+}
+
+.info-half-circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw; /* Full width of the viewport */
+    height: 30vh;
+    background-color: #004a6e;
+    border-bottom-left-radius: 4000px;
+    border-bottom-right-radius: 4000px;
+    z-index: -1;
+}
+
+.info-header {
+    text-align: center;
+    padding: 100px 20px 50px;
+}
+
+.info-header h1 {
+    font-size: 70px;
+    font-weight: bold;
+    color: white;
+}
+
+.info-content {
+    display: flex; /* Enable side-by-side layout */
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: transparent; /* Full transparency */
+    padding: 50px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 18px;
+    text-align: justify;
+    box-shadow: none; /* Remove the box-shadow */
+    gap: 100px; /* Add spacing between columns */
+    color: #004A6D; /* Change text color to #004A6D */
+}
+
+.info-left,
+.info-right {
+    flex: 1; /* Distribute equal space for both sections */
+    padding: 0 10px;
+}
+
+.info-left p,
+.info-right p {
+    margin-bottom: 15px;
+}
+
+.info-right {
+    text-align: justify;
+}
+.blue-orange-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    margin: 50px 0; /* Adjust spacing as needed */
+}
+
+.orange-background {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: #FFA500; /* Orange */
+    background: url('assets/Rectangle-18.png') no-repeat center center/cover; /* Replace with the orange part of your image */
+    z-index: -1;
+}
+
+.blue-background {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: #004A6D; /* Blue */
+    background: url('assets/Rectangle-19.png') no-repeat center center/cover; /* Replace with the blue part of your image */
+    z-index: -1;
+}
+
+.content {
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content .small-text {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.content .user-groups {
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-groups span {
+    display: block;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.intro, .project, .developers {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro p {
+    font-size: 35px;
+    line-height: 2.0;
+    margin: 15px 0;
+    color: #004A6D;
+    font-family: monospace;
+}
+
+.project h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.project p {
+    font-size: 30px;
+    color: #289DD2;
+}
+.about-this {
+    color: #004A6D; 
+}
+
+.project-text {
+    color: #E29830; 
+}
+
+.developers h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #E29830;
+}
+
+.developer-cards {
+    display: flex;
+    justify-content: center; /* Centers the cards horizontally */
+    align-items: stretch; /* Ensures all cards are the same height */
+    gap: 20px; /* Space between cards */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    max-width: 100%; /* Ensure it fits within the container */
+    overflow-x: auto; /* Add horizontal scrolling for smaller screens */
+}
+
+.card {
+    flex: 1 1 calc(25% - 20px); /* Ensures 4 cards fit horizontally */
+    max-width: calc(25% - 20px); /* Adjusts width for 4 columns */
+    background-color: #00587a;
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #017a9b;
+    margin: 0 auto 10px;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.card a {
+    color: #f28c28;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer {
+    width: 100%; /* Ensures the footer spans the full width of the screen */
+    background-color: #111; /* Black background */
+    color: #ccc; /* Light gray text */
+    text-align: center;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    margin: 0; /* Removes any margin that might restrict width */
+    box-sizing: border-box; /* Includes padding and border in the total width */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+}
+
+.footer-logo .highlight {
+    color: #ff9900; /* Orange for "ify" */
+}
+
+.footer p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.footer p span {
+    color: #ff9900; /* Highlighted author names */
+}

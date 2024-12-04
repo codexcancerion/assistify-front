@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+        // Function to get a cookie value by name
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(';');
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookie = cookieArr[i].trim();
+                if (cookie.indexOf(name + '=') === 0) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        // Retrieve the student ID from the cookies
+        const studentId = getCookie('student_id');
+
+        if (!studentId) {
+            // No student_id found, redirect to wslogin page
+            window.location.href = '/src/auth/wslogin';
+        } else {
+            // Call the API to get student details
+            $.ajax({
+                type: 'GET',
+                url: `http://127.0.0.1:8000/api/students/${studentId}`,
+                success: function(data) {
+                    if (data.supervisor_id) {
+                        // Redirect to student_dashboard if a supervisor is assigned
+                        window.location.href = '/src/tabs/student_dashboard';
+                    } else {
+                        // Redirect to student_profile if no supervisor is assigned
+                        window.location.href = '/src/tabs/student_profile';
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching student data:', xhr.responseText);
+                    alert('An error occurred. Redirecting to login.');
+                    window.location.href = '/src/auth/wslogin'; // Redirect to login on error
+                }
+            });
+        }
+    </script>
+</body>
+</html>

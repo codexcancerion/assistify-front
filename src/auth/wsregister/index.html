@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Student</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <!-- Import jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="register-container">
+        <div class="background-image"></div>
+        <div class="half-circle"></div>
+        <div class="top-logo-container">
+            <img src="assets/assistify.png" alt="Assistify Logo" class="top-logo">
+            <h2 class="system-title">Working Scholar Management System</h2>
+        </div>
+        <!-- <div class="kcp-logo-container">
+            <img src="assets/kcp-logo.png" alt="Middle Logo" class="middle-logo">
+        </div> -->
+        <div class="register-box">
+            <h1 class="title">Register Student</h1>
+
+            <form id="register-form" class="register-form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-column">
+                            <label for="firstname" class="input-label">Firstname</label>
+                            <input type="text" id="firstname" placeholder="Firstname" class="input-field" required>
+                        </div>
+                        <div class="input-column">
+                            <label for="lastname" class="input-label">Lastname</label>
+                            <input type="text" id="lastname" placeholder="Lastname" class="input-field" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-column">
+                        <label for="studentid" class="input-label">Student ID</label>
+                        <input type="text" id="studentid" placeholder="Student ID" class="input-field" required>
+                    </div>
+                    <div class="input-column department-column">
+                        <label for="department" class="input-label">Department</label>
+                        <select id="department" class="input-field" required>
+                            <option value="CIT">College of Information Technology</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-column">
+                        <label for="email" class="input-label">Email</label>
+                        <input type="email" id="email" placeholder="Email" class="input-field" required>
+                    </div>
+                    <div class="input-column">
+                        <label for="password" class="input-label">Password</label>
+                        <input type="password" id="password" placeholder="Password" class="input-field" required>
+                    </div>
+                </div>
+                <button type="submit" class="register-button">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#register-form').on('submit', function (e) {
+                e.preventDefault();
+
+                // Get form data
+                const firstname = $('#firstname').val();
+                const lastname = $('#lastname').val();
+                const studentid = $('#studentid').val();
+                const department = $('#department').val();
+                const email = $('#email').val();
+                const password = $('#password').val();
+
+                // Log form data for debugging
+                console.log(firstname, lastname, studentid, department, email, password);
+
+                // Prepare data to send to the API
+                const data = {
+                    first_name: firstname,
+                    last_name: lastname,
+                    student_id: studentid,
+                    department: department,
+                    email: email,
+                    password: password,
+                    role: 'student'  // Default role for student registration
+                };
+
+                // Send POST request using jQuery AJAX
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/students',  // Update to correct API endpoint
+                    type: 'POST',
+                    data: data,
+                    success: function (response) {
+                        console.log('Student registered successfully:', response);
+
+                        // Save response data (e.g., student ID, role) to cookies if needed
+                        document.cookie = "student_id=" + response.data.id + "; path=/; SameSite=Lax";
+                        document.cookie = "student_role=" + response.data.role + "; path=/; SameSite=Lax";
+
+                        // Alert user and redirect
+                        alert("Student registered successfully!");
+                        window.location.href = "/src/router.html";  // Redirect to a specific page after registration
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error:', xhr.responseText);
+                        alert("Error registering student. Please try again.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

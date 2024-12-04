@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "sans-serif","montserrat" ;
+    background-color: #f0f0f0;
+}
+
+.login-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/image 2.jpg') no-repeat center center/cover;
+    z-index: -2;
+}
+
+.background-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: -1;
+}
+
+.half-circle {
+    position: absolute;
+    bottom: 0;
+    right: -30%;
+    width: 150%;
+    height: 625px;
+    background-color: #004a6e;
+    border-top-left-radius: 1500px;
+    border-top-right-radius: 2000px;
+    z-index: 0;
+}
+
+.top-logo-container {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.top-logo {
+    width: 200px;
+}
+
+.system-title {
+    color: #289DD2;
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+.kcp-logo-container {
+    position: absolute;
+    top: 27%;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.middle-logo {
+    width: 185px;
+    margin: 10px auto 20px;
+    display: block;
+}
+
+.login-box {
+    background-color: transparent;
+    border-radius: 15px;
+    width: 400px;
+    text-align: center;
+    padding: 30px;
+    box-shadow: none;
+    z-index: 1;
+    position: absolute;
+    top: 65%;
+    transform: translateY(-50%);
+}
+
+.title {
+    color: white;
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input-label {
+    font-size: 16px;
+    color: white;
+    text-align: left;
+    width: 385px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 377px;
+    height: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+.input-field:focus {
+    outline: 2px solid #87ceeb;
+}
+
+.login-button {
+    background-color: white;
+    color: #004A6D;
+    font-size: 16px;
+    padding: 17px 20px;
+    border: none;
+    width: 211px;
+    height: 60px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #87ceeb;
+}
+
+.register-link {
+    color: orange;
+    font-size: 17px;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
