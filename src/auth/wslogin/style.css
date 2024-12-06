@@ -41,11 +41,11 @@ body {
 .half-circle {
     position: absolute;
     bottom: 0;
-    right: -30%;
+    right: -25%;
     width: 150%;
     height: 625px;
     background-color: #004a6e;
-    border-top-left-radius: 1500px;
+    border-top-left-radius: 2000px;
     border-top-right-radius: 2000px;
     z-index: 0;
 }
@@ -98,7 +98,7 @@ body {
 .title {
     color: white;
     font-size: 40px;
-    margin: 10px 0;
+    margin-bottom: 60px;
 }
 
 .login-form {
