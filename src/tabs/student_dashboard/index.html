@@ -60,7 +60,8 @@
                             </path>
                             <rect x="9" y="3" width="6" height="4" rx="2"></rect>
                         </svg>
-                        <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Daily Time Record">DTR</a>
+                        <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600"
+                            title="Daily Time Record">DTR</a>
                     </li>
 
                     <!-- Tasks -->
@@ -109,7 +110,8 @@
                                             Profile</a>
                                     </li>
                                     <li id="">
-                                        <button id="logout-btn" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</button>
+                                        <button id="logout-btn"
+                                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</button>
                                     </li>
                                     <!-- 
                                     <li id="osasProfileLink">
@@ -163,7 +165,8 @@
         <div class="flex-1 p-6">
             <!-- Welcome Section -->
             <div class="bg-[#289dd2] text-white rounded-lg p-10 mb-6">
-                <h2 class="text-5xl font-bold" style="font-family: 'Baloo 2', sans-serif;">Welcome <span id="student-name">Student</span>!</h2>
+                <h2 class="text-5xl font-bold" style="font-family: 'Baloo 2', sans-serif;">Welcome <span
+                        id="student-name">Student</span>!</h2>
                 <!-- <p class="text-xl" style="font-family: 'Baloo 2', sans-serif;">The Quick Brown Fox</p>
                 <p class="mt-2" style="font-family: 'Montserrat', sans-serif;">The quick brown fox jumps over the head
                     of the lazy dog.</p> -->
@@ -173,15 +176,14 @@
             <div class="bg-[#ededed] shadow rounded-lg p-10 mb-6">
                 <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">Daily
                     Time Record</h3>
-                <p class="font-bold mb-4 text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">This Week</p>
-                <div class="flex items-center justify-between">
-                    <div class="grid grid-cols-5 gap-4 text-center">
-                        <div>Monday<br><span class="text-[#289dd2]">4 Hours</span></div>
-                        <div>Tuesday<br><span class="text-[#289dd2]">4 Hours</span></div>
-                        <div>Wednesday<br><span class="text-[#289dd2]">4 Hours</span></div>
-                        <div>Thursday<br><span class="text-[#289dd2]">4 Hours</span></div>
-                        <div class="text-[#e29830]">Friday<br><span class="text-[#289dd2]">0 Hours</span></div>
+                <p class="font-bold mb-4 text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">Previously</p>
+                <div class="flex justify-between">
+                    <div class="grid gap-4 ">
+                        <ul id="time-logs-list">
+                            <!-- Time logs will be injected here -->
+                        </ul>
                     </div>
+
                     <div>
                         <p class="text-xl text-[#004A6D] font-bold" style="font-family: 'Baloo 2', sans-serif;"
                             id="current-time">
@@ -197,29 +199,6 @@
                             style="font-family: 'Montserrat', sans-serif;"></p>
                     </div>
 
-                    <script>
-                        function getCurrentTime() {
-                            const currentDate = new Date();
-                            let hours = currentDate.getHours();
-                            let minutes = currentDate.getMinutes();
-                            const ampm = hours >= 12 ? 'pm' : 'am';
-                            hours = hours % 12 || 12;
-                            minutes = minutes < 10 ? '0' + minutes : minutes;
-                            return `${hours}:${minutes} ${ampm}`;
-                        }
-
-                        // Function to handle the Log In button click
-                        document.getElementById('log-in-button').addEventListener('click', function () {
-                            const loginTime = getCurrentTime();
-                            document.getElementById('logged-time').textContent = `You logged in at: ${loginTime}`;
-                            document.getElementById('current-time').textContent = loginTime;
-                        });
-
-                        document.getElementById('current-time').textContent = getCurrentTime();
-                        setInterval(() => {
-                            document.getElementById('current-time').textContent = getCurrentTime();
-                        }, 10000);
-                    </script>
 
                 </div>
             </div>
@@ -229,47 +208,23 @@
                 <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">
                     Tasks
                 </h3>
-                <table class="w-full text-left table-auto">
+                <table class="w-full text-left table-auto" id="taskTable">
                     <thead>
                         <tr class="text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">
-                            <th class="border-b-2 border-gray-300 pb-2 px-4">Task</th>
                             <th class="border-b-2 border-gray-300 pb-2 px-4">Description</th>
                             <th class="border-b-2 border-gray-300 pb-2 px-4">Deadline</th>
                             <th class="border-b-2 border-gray-300 pb-2 px-4">Priority</th>
                             <th class="border-b-2 border-gray-300 pb-2 px-4">Status</th>
+                            <th class="border-b-2 border-gray-300 pb-2 px-4">Assigned To</th>
                             <th class="border-b-2 border-gray-300 pb-2 px-4"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
-                                Do this task
-                            </td>
-                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
-                                The quick brown fox jumps over the head of the lazy dog
-                            </td>
-                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
-                                11/19/2024
-                            </td>
-                            <td class="bg-red-400 py-2 px-4 rounded-lg text-white"
-                                style="font-family: 'Montserrat', sans-serif;">
-                                High
-                            </td>
-                            <td class="bg-orange-400 py-2 px-4 rounded-lg text-white"
-                                style="font-family: 'Montserrat', sans-serif;">
-                                Undone
-                            </td>
-                            <td class="py-2 px-4">
-                                <button
-                                    class="bg-blue-500 text-white px-4 py-1 rounded transition-colors duration-300 hover:bg-blue-600"
-                                    style="font-family: 'Montserrat', sans-serif;">
-                                    Mark Done
-                                </button>
-                            </td>
-                        </tr>
-                        <!-- Repeat rows as needed -->
+                    <tbody id="taskTableBody">
+                        <!-- Dynamic content will be rendered here -->
                     </tbody>
                 </table>
+
+
             </div>
 
 
@@ -277,74 +232,311 @@
             <div class="bg-[#ededed] shadow rounded-lg p-10">
                 <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">Payroll
                     Calculator</h3>
-                <div class="px-10 flex justify-between">
+                <div class="px-10 flex justify-around">
                     <div>
-                        <p class="text-4xl text-center text-yellow-500 font-bold"
-                            style="font-family: 'Baloo 2', sans-serif;">25 h.</p>
+                        <p id="totalHours" class="text-4xl text-center text-yellow-500 font-bold"
+                            style="font-family: 'Baloo 2', sans-serif;">0 h.</p>
                         <p class="font-bold text-center text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">
                             Total Hours Worked</p>
-                        <p class="text-center text-[#004A6D]" style="font-family: 'Montserrat', sans-serif;">Based on
-                            ---</p>
                     </div>
                     <div>
-                        <p class="text-4xl text-center text-yellow-500 font-bold"
-                            style="font-family: 'Baloo 2', sans-serif;">₱1,250.00</p>
+                        <p id="totalPayroll" class="text-4xl text-center text-yellow-500 font-bold"
+                            style="font-family: 'Baloo 2', sans-serif;">₱0.00</p>
                         <p class="font-bold text-center text-[#004A6D]" style="font-family: 'Baloo 2', sans-serif;">
                             Total Accumulated Payroll</p>
-                        <p class="text-center text-[#004A6D]" style="font-family: 'Montserrat', sans-serif;">Based on
-                            ---</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>       
-        $(document).ready(function () { 
+    <script>
+        $(document).ready(function () {
 
             $('#logout-btn').on('click', function () {
-            document.cookie = "student_id=" + "" + "; path=/; SameSite=Lax";
+                document.cookie = "student_id=" + "" + "; path=/; SameSite=Lax";
 
-            window.location.reload()
-        });
+                window.location.reload()
+            });
 
-        // Function to get a cookie by name
-        function getCookie(name) {
-            let cookieArr = document.cookie.split(';');
-            for (let i = 0; i < cookieArr.length; i++) {
-                let cookie = cookieArr[i].trim();
-                if (cookie.indexOf(name + '=') == 0) {
-                    return cookie.substring(name.length + 1);
+            // Function to get a cookie by name
+            function getCookie(name) {
+                let cookieArr = document.cookie.split(';');
+                for (let i = 0; i < cookieArr.length; i++) {
+                    let cookie = cookieArr[i].trim();
+                    if (cookie.indexOf(name + '=') == 0) {
+                        return cookie.substring(name.length + 1);
+                    }
                 }
+                return null;
             }
-            return null;
-        }
 
-        // Get the student's ID from the cookies
-        var studentId = getCookie("student_id");
-        let studentData;
+            // Get the student's ID from the cookies
+            var studentId = getCookie("student_id");
+            let studentData;
 
-        if (studentId) {
-            // Make a GET request to retrieve the student's data using the ID
-            $.ajax({
-                type: 'GET',
-                url: 'http://127.0.0.1:8000/api/students/' + studentId,
-                success: function(data) {
-                    // Populate the student's data on the page
-                    studentData = data;
-                    $('#student-name').text(data.first_name);
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                    alert("Error loading student data.");
+            if (studentId) {
+                // Make a GET request to retrieve the student's data using the ID
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1:8000/api/students/' + studentId,
+                    success: function (data) {
+                        // Populate the student's data on the page
+                        studentData = data;
+                        $('#student-name').text(data.first_name);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert("Error loading student data.");
+                    }
+                });
+            } else {
+                alert("No student data found. Please log in again.");
+                window.location.href = '/src/auth/wslogin/'; // Redirect to login page if no cookie is found
+            }
+
+
+
+            // Fetch time logs from the backend API
+            fetch(`http://127.0.0.1:8000/api/time-logs?student_id=${studentId}`)
+                .then(response => response.json())
+                .then(timeLogs => {
+                    // Render the time logs
+                    const timeLogsList = document.getElementById('time-logs-list');
+                    timeLogsList.innerHTML = ''; // Clear previous logs
+
+                    // Limit to the first 5 logs
+                    const limitedLogs = timeLogs.slice(0, 5);
+
+                    limitedLogs.forEach(log => {
+                        const { check_in, check_out, total_hours_worked } = log;
+
+                        // Format check-in and check-out timestamps
+                        const checkInDate = new Date(check_in).toLocaleDateString(); // Display only the date
+                        const checkInTime = new Date(check_in).toLocaleTimeString(); // Display the time
+                        let checkOutTime
+                        check_out ? checkOutTime = new Date(check_out).toLocaleTimeString() : checkOutTime = null; // Display the time
+
+                        // Create a list item to display the time log
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('mb-2', 'p-2', 'border-b');
+                        listItem.innerHTML = `
+                <strong>${checkInDate}</strong><br>
+                <span>${checkInTime} - ${checkOutTime || "Not logged out"}</span><br>
+                <span class="text-green-500">${checkOutTime ? total_hours_worked : "Ongoing"} hours worked</span>
+            `;
+                        timeLogsList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching time logs:', error));
+
+
+
+
+
+
+            // LOGIN LOGOUT FUNCTIONALITY
+            function getCurrentTime() {
+                const currentDate = new Date();
+                let hours = currentDate.getHours();
+                let minutes = currentDate.getMinutes();
+                const ampm = hours >= 12 ? 'pm' : 'am';
+                hours = hours % 12 || 12;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                return `${hours}:${minutes} ${ampm}`;
+            }
+
+            // Set initial current time
+            $('#current-time').text(getCurrentTime());
+
+            // Update time every 10 seconds
+            setInterval(() => {
+                $('#current-time').text(getCurrentTime());
+            }, 10000);
+
+            // Fetch the time logs and determine the button state (Login / Logout)
+            $.get(`http://127.0.0.1:8000/api/time-logs?student_id=${studentId}`, function (data) {
+                if (data && data.length > 0) {
+                    const firstLog = data[0];
+
+                    if (firstLog.check_in && !firstLog.check_out) {
+                        // If check_in exists but check_out is missing, show the logout option
+                        $('#log-in-button').text('Log Out');
+                        $('#log-in-button').removeClass('bg-yellow-500').addClass('bg-blue-500');
+                        $('#logged-time').text(`You logged in at: ${firstLog.check_in}`);
+                    } else if (firstLog.check_in && firstLog.check_out) {
+                        // If both check_in and check_out exist, show the login option
+                        $('#log-in-button').text('Log In');
+                        $('#log-in-button').removeClass('bg-blue-500').addClass('bg-yellow-500');
+                        $('#logged-time').text(`You logged out at: ${firstLog.check_out}`);
+                    }
+                } else {
+                    // If no time log exists, assume the student hasn't logged in yet
+                    $('#log-in-button').text('Log In');
+                    $('#log-in-button').removeClass('bg-blue-500').addClass('bg-yellow-500');
+                    $('#logged-time').text('You have not logged in yet.');
                 }
             });
-        } else {
-            alert("No student data found. Please log in again.");
-            window.location.href = '/src/auth/wslogin/'; // Redirect to login page if no cookie is found
-        }
-    })
+
+            // Handle Log In / Log Out button click
+            $('#log-in-button').on('click', function () {
+                const button = $('#log-in-button');
+                const loggedTimeElement = $('#logged-time');
+
+                if (button.text() === 'Log In') {
+                    // Log in
+                    $.post('http://127.0.0.1:8000/api/time-logs/login', { student_id: studentId }, function (response) {
+                        if (response.time_log) {
+                            loggedTimeElement.text(`You logged in at: ${response.time_log.check_in}`);
+                            button.text('Log Out');
+                            button.removeClass('bg-yellow-500').addClass('bg-blue-500');
+                            window.location.reload()
+                        }
+                    });
+                } else if (button.text() === 'Log Out') {
+                    // Log out
+                    $.post('http://127.0.0.1:8000/api/time-logs/logout', { student_id: studentId }, function (response) {
+                        if (response.time_log) {
+                            loggedTimeElement.text(`You logged out at: ${response.time_log.check_out}`);
+                            button.text('Log In');
+                            button.removeClass('bg-blue-500').addClass('bg-yellow-500');
+                            window.location.reload()
+                        }
+                    });
+                }
+            });
+
+
+
+
+
+
+            // TASKS FUNCTIONALITY
+            // Function to fetch data from the API
+            function fetchTasks() {
+                $.ajax({
+                    url: `http://127.0.0.1:8000/api/tasks?student_id=${studentId}`,  // Replace with your API endpoint
+                    method: 'GET',  // Adjust the method based on your API (POST/GET)
+                    success: function (data) {
+                        renderTasks(data);  // Call the function to render tasks
+                    },
+                    error: function (error) {
+                        console.error('Error fetching tasks:', error);
+                    }
+                });
+            }
+            // Function to render tasks in the table
+            function renderTasks(tasks) {
+                const $taskTableBody = $('#taskTableBody');
+                $taskTableBody.empty();  // Clear any existing data
+
+                tasks.forEach(task => {
+                    const assignedTo = task.assigned_to.first_name + ' ' + task.assigned_to.last_name + ' (' + task.assigned_to.student_id + ')';
+                    const priorityClass = task.priority === 'High' ? 'bg-red-400' : task.priority === 'Medium' ? 'bg-yellow-400' : 'bg-green-400';
+                    const statusClass = task.status === 'Pending' ? 'bg-orange-400' : 'bg-green-400';
+
+                    // Conditionally hide the "Mark Done" button if the status is "Completed"
+                    const buttonHtml = task.status === 'Completed'
+                        ? ''  // Empty string means no button
+                        : `<button class="bg-blue-500 text-white px-4 py-1 rounded transition-colors duration-300 hover:bg-blue-600" style="font-family: 'Montserrat', sans-serif;" data-task-id="${task.id}">
+                            Mark Done
+                        </button>`;
+
+                    // Create a new row
+                    const row = `
+                        <tr data-task-id="${task.id}">
+                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
+                                ${task.description}
+                            </td>
+                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
+                                ${task.deadline}
+                            </td>
+                            <td class="${priorityClass} py-2 px-4 rounded-lg text-white" style="font-family: 'Montserrat', sans-serif;">
+                                ${task.priority}
+                            </td>
+                            <td class="${statusClass} py-2 px-4 rounded-lg text-white" style="font-family: 'Montserrat', sans-serif;">
+                                ${task.status}
+                            </td>
+                            <td class="bg-white py-2 px-4 rounded-lg" style="font-family: 'Montserrat', sans-serif;">
+                                ${assignedTo}
+                            </td>
+                            <td class="py-2 px-4">
+                                ${buttonHtml}  <!-- Dynamically rendered button -->
+                            </td>
+                        </tr>
+                    `;
+                    // Append the row to the table body
+                    $taskTableBody.append(row);
+                });
+
+                // Add event listeners for "Mark Done" buttons
+                $('button').on('click', function () {
+                    const taskId = $(this).data('task-id');  // Get the task ID from the button's data attribute
+                    markTaskAsCompleted(taskId);
+                });
+            }
+
+            // Function to mark the task as completed by calling the API
+            function markTaskAsCompleted(taskId) {
+                $.ajax({
+                    url: `http://127.0.0.1:8000/api/tasks/${taskId}/complete`,  // API endpoint
+                    method: 'PATCH',  // HTTP method
+                    contentType: 'application/json',  // Set the content type to JSON
+                    dataType: 'json',  // Expect JSON response
+                    success: function (data) {
+                        if (data.message === 'Task marked as completed') {
+                            // Update the status of the task in the table
+                            const taskRow = $(`[data-task-id="${taskId}"]`);
+                            taskRow.find('td:nth-child(4)').text('Completed');  // Update the status cell
+                            taskRow.find('button').remove();  // Remove the "Mark Done" button
+                            taskRow.find('td:nth-child(4)').removeClass('bg-orange-400').addClass('bg-green-400');  // Update the status class
+                            window.location.reload()
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error marking task as completed:', error);
+                    }
+                });
+            }
+
+
+            // Initial fetch of tasks when the page loads
+            fetchTasks();
+
+
+
+            // PAYROLL
+            // Function to fetch time logs and calculate total hours worked and payroll
+            function fetchAndCalculatePayroll() {
+                $.ajax({
+                    url: `http://127.0.0.1:8000/api/time-logs?student_id=${studentId}`,  // Your API endpoint
+                    method: 'GET',
+                    success: function (data) {
+                        let totalHours = 0;
+                        // Iterate over the time logs to sum up the total hours worked
+                        data.forEach(log => {
+                            totalHours += log.total_hours_worked; // Directly using the total_hours_worked from API
+                        });
+
+                        // Calculate payroll (50 PHP per hour)
+                        const totalPayroll = totalHours * 50;
+
+                        // Update the HTML with calculated values
+                        $('#totalHours').text(`${totalHours} h.`);  // Display total hours worked
+                        $('#totalPayroll').text(`₱${totalPayroll.toFixed(2)}`);  // Display the calculated payroll
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching time logs:', error);
+                    }
+                });
+            }
+
+            // Call the function to fetch and calculate on page load
+            fetchAndCalculatePayroll();
+
+        });
     </script>
+
 
 </body>
 
