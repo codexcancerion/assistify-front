@@ -1,10 +1,15 @@
 /* Global Styles */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
+* {
+    
+    font-family: "montserrat";
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: "sans-serif", "montserrat";
+    font-family: "montserrat";
     background-color: #f0f0f0;
 }
 
@@ -95,7 +100,6 @@ body {
     color: #ffffff;
     margin-top: 10px;
     margin-bottom: 20px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .button-container {
@@ -198,7 +202,7 @@ body {
     align-items: center;
     width: 100%;
     height: 300px; /* Adjust the height as needed */
-    margin: 50px 0; 
+    margin-bottom: 50px; 
 }
 
 .orange-background {
@@ -222,7 +226,7 @@ body {
 }
 
 .content .small-text {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 10px;
 }

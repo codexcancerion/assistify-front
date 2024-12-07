@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -31,14 +32,14 @@
     <div class="flex h-screen">
         <!-- Sidebar ----------------------------------------------------------------------------------->
 
-        <aside class="bg-[#f5f5f5] text-[#004a6d] w-64 p-6 h-full flex flex-col fixed md:static">
+        <aside class="bg-[#f5f5f5] text-[#004a6d] w-64 p-6 h-screen flex flex-col fixed static">
             <!-- Logo -->
             <h1 class="text-5xl font-bold mb-6" style="font-family: 'Baloo 2', sans-serif;">
                 <span style="color: #289DD2;">assist</span><span style="color: #e29830;">ify</span>
             </h1>
 
             <!-- Navigation -->
-            <nav class="flex-grow">
+            <nav class="flex-grow flex flex-col justify-between">
                 <ul>
                     <!-- Home -->
                     <li class="mb-4 flex items-center">
@@ -47,7 +48,7 @@
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
-                        <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Home">Home</a>
+                        <a href="#home" class="hover:text-gray-600" title="Home">Home</a>
                     </li>
 
                     <!-- DTR -->
@@ -60,7 +61,7 @@
                             </path>
                             <rect x="9" y="3" width="6" height="4" rx="2"></rect>
                         </svg>
-                        <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Daily Time Record">DTR</a>
+                        <a href="#dtr" class="hover:text-gray-600" title="Daily Time Record">DTR</a>
                     </li>
 
                     <!-- Tasks -->
@@ -74,7 +75,7 @@
                                     d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 2h14v14H5zm11.95 4.795a1 1 0 1 0-1.414-1.414l-4.95 4.95l-2.121-2.121a1 1 0 0 0-1.415 1.414l2.758 2.758a1.1 1.1 0 0 0 1.556 0z" />
                             </g>
                         </svg>
-                        <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Tasks">Tasks</a>
+                        <a href="#tasks" class="hover:text-gray-600" title="Tasks">Tasks</a>
                     </li>
 
                     <!-- Payroll -->
@@ -94,134 +95,133 @@
                                 <circle cx="16" cy="17" r="1" fill="#289DD2" />
                             </g>
                         </svg>
-                        <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Payroll">Payroll</a>
+                        <a href="#payroll" class="hover:text-gray-600" title="Payroll">Payroll</a>
+                    </li>
+                </ul>
+
+                <ul>
+                    <!-- Profile -->
+                    <li class="mb-4 flex items-center">
+                        <div class="bg-gray-100 flex justify-left">
+                            <ul class="mb-4 flex flex-col items-start">
+                                <li class="mb-4 flex items-center relative">
+                                    <button id="logout-btn"
+                                        class="block px-4 py-2 w-full text-left text-gray-700 hover:bg-gray-100">Logout</button>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
 
-                    <!-- Profile -->
-                    <div class="bg-gray-100 flex justify-left items-center h-screen mb-12">
-                        <ul class="mb-4 flex flex-col items-start">
-                            <li class="mb-4 flex items-center relative">
-                                <ul id="dropdown"
-                                    class="absolute left-0 bottom-full mb-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg hidden">
-                                    <li>
-                                        <a href="/src/tabs/student_dashboard/student-profile.html"
-                                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My
-                                            Profile</a>
-                                    </li>
-                                    <li id="">
-                                        <button id="logout-btn" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</button>
-                                    </li>
-                                    <!-- 
-                                    <li id="osasProfileLink">
-                                        <a href="tabs/osas-profile.html"
-                                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">OSAS Profile</a>
-                                    </li> -->
-                                </ul>
-
-                                <button onclick="toggleDropdown()"
-                                    class="flex items-center px-4 py-2 bg-transparent text-gray-500 hover:text-green-500 transition duration-300">
-                                    <svg class="h-6 w-6 text-[#289DD2] mr-2" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.87 0-7 3.13-7 7h14c0-3.87-3.13-7-7-7z" />
-                                    </svg>
-                                    <span>Profile</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <script>
-                        const userRole = 'supervisor';
-                        function toggleDropdown() {
-                            const dropdown = document.getElementById('dropdown');
-                            dropdown.classList.toggle('hidden');
-                        }
-
-                        if (userRole === 'student') {
-                            const supervisorLink = document.getElementById('supervisorProfileLink', 'osasProfileLink');
-                            supervisorLink.style.display = 'none';
-                            osasProfileLink.style.display = 'none';
-                        }
-
-                        document.addEventListener('click', function (event) {
-                            const dropdown = document.getElementById('dropdown');
-                            const button = event.target.closest('button');
-                            const dropdownContainer = event.target.closest('#dropdown');
-
-                            if (!button && !dropdownContainer) {
-                                dropdown.classList.add('hidden');
-                            }
-                        });
-                    </script>
 
                 </ul>
             </nav>
         </aside>
 
         <!-- Main Section -->
-        <div class="flex-1 p-6">
+        <div class="flex-1 p-6 ml-64">
             <!-- Welcome Section -->
             <div class="bg-[#289dd2] text-white rounded-lg p-10 mb-6">
-                <h2 class="text-5xl font-bold" style="font-family: 'Baloo 2', sans-serif;">Welcome <span id="student-name">Student</span>!</h2>
-                <p class="text-xl" style="font-family: 'Baloo 2', sans-serif;">You currently have no supervisor</p>
-                
+                <div class="flex justify-between">
+                    <div class="flex flex-col justify-center">
+                        <h2 class="text-6xl font-bold" style="font-family: 'Baloo 2', sans-serif;">Welcome <span
+                                id="student-name">Student</span>! 👋</h2>
+                        <p class="text-xl" style="font-family: 'Baloo 2', sans-serif;">📢 You currently have no
+                            supervisor</p>
+                    </div>
+                    <div>
+                        <div class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden">
+                            <div class="p-6 text-center">
+                                <h2 id="name" class="text-2xl font-semibold text-gray-700" style="font-family: 'Baloo 2', sans-serif;"></h2>
+                                <p id="department" class="text-sm text-gray-500"></p>
+                            </div>
+                            <div class="p-6 border-t">
+                                <div class="flex items-center space-x-2 text-gray-600 mb-3">
+                                    <i class="fas fa-envelope text-blue-500"></i>
+                                    <span id="email" class="text-sm"></span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-600 mb-3">
+                                    <i class="fas fa-id-card text-blue-500"></i>
+                                    <span id="student_id" class="text-sm"></span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-600 mb-3">
+                                    <i class="fas fa-user-tie text-blue-500"></i>
+                                    <span id="supervisor_id" class="text-sm"></span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-600">
+                                    <i class="fas fa-calendar-alt text-blue-500"></i>
+                                    <span id="created_at" class="text-sm"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
 
 
+
+
         </div>
-    </div>
 
-    <script>       
-        $(document).ready(function () { 
-            
-            $('#logout-btn').on('click', function () {
-            document.cookie = "student_id=" + "" + "; path=/; SameSite=Lax";
+        <script>
+            $(document).ready(function () {
 
-            window.location.reload()
-        });
-        // Function to get a cookie by name
-        function getCookie(name) {
-            let cookieArr = document.cookie.split(';');
-            for (let i = 0; i < cookieArr.length; i++) {
-                let cookie = cookieArr[i].trim();
-                if (cookie.indexOf(name + '=') == 0) {
-                    return cookie.substring(name.length + 1);
-                }
-            }
-            return null;
-        }
+                $('#logout-btn').on('click', function () {
+                    document.cookie = "student_id=" + "" + "; path=/; SameSite=Lax";
 
-        // Get the student's ID from the cookies
-        var studentId = getCookie("student_id");
-        let studentData;
-
-        if (studentId) {
-            // Make a GET request to retrieve the student's data using the ID
-            $.ajax({
-                type: 'GET',
-                url: 'http://127.0.0.1:8000/api/students/' + studentId,
-                success: function(data) {
-                    // Populate the student's data on the page
-                    studentData = data;
-                    $('#student-name').text(data.first_name);
-                    if (data.supervisor_id) {
-                        // Redirect to student_dashboard if a supervisor is assigned
-                        window.location.href = '/src/tabs/student_dashboard';
+                    window.location.reload()
+                });
+                // Function to get a cookie by name
+                function getCookie(name) {
+                    let cookieArr = document.cookie.split(';');
+                    for (let i = 0; i < cookieArr.length; i++) {
+                        let cookie = cookieArr[i].trim();
+                        if (cookie.indexOf(name + '=') == 0) {
+                            return cookie.substring(name.length + 1);
+                        }
                     }
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                    alert("Error loading student data.");
+                    return null;
                 }
+
+                // Get the student's ID from the cookies
+                var studentId = getCookie("student_id");
+                let studentData;
+
+                if (studentId) {
+                    // Make a GET request to retrieve the student's data using the ID
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://127.0.0.1:8000/api/students/' + studentId,
+                        success: function (data) {
+                            // Populate the student's data on the page
+                            studentData = data;
+                            $('#student-name').text(data.first_name);
+
+                            // Populate the profile data using jQuery
+                            $("#name").text(`${studentData.first_name} ${studentData.last_name}`);
+                            $("#department").text(studentData.department);
+                            $("#email").text(studentData.email);
+                            $("#student_id").text(`Student ID: ${studentData.student_id}`);
+                            $("#supervisor_id").text(`Supervisor ID: ${studentData.supervisor_id}`);
+                            $("#created_at").text(`Created At: ${new Date(studentData.created_at).toLocaleString()}`);
+                            if (data.supervisor_id) {
+                                // Redirect to student_dashboard if a supervisor is assigned
+                                window.location.href = '/src/tabs/student_dashboard';
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            alert("Error loading student data.");
+                        }
+                    });
+                } else {
+                    alert("No student data found. Please log in again.");
+                    window.location.href = '/src/auth/wslogin/'; // Redirect to login page if no cookie is found
+                }
+
             });
-        } else {
-            alert("No student data found. Please log in again.");
-            window.location.href = '/src/auth/wslogin/'; // Redirect to login page if no cookie is found
-        }
-    })
-    </script>
+        </script>
 
 </body>
 

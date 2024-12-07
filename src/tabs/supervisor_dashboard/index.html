@@ -31,14 +31,15 @@
   <div class="flex h-screen">
     <!-- Sidebar ----------------------------------------------------------------------------------->
 
-    <aside class="bg-[#f5f5f5] text-[#004a6d] w-64 p-6 h-full flex flex-col fixed md:static">
+
+    <aside class="bg-[#f5f5f5] text-[#004a6d] w-64 p-6 h-screen flex flex-col fixed static">
       <!-- Logo -->
       <h1 class="text-5xl font-bold mb-6" style="font-family: 'Baloo 2', sans-serif;">
         <span style="color: #289DD2;">assist</span><span style="color: #e29830;">ify</span>
       </h1>
 
       <!-- Navigation -->
-      <nav class="flex-grow">
+      <nav class="flex-grow flex flex-col justify-between">
         <ul>
           <!-- Home -->
           <li class="mb-4 flex items-center">
@@ -47,10 +48,10 @@
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg>
-            <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Home">Home</a>
+            <a href="#home" class="hover:text-gray-600" title="Home">Home</a>
           </li>
 
-          <!-- DTR -->
+          <!-- Working students -->
           <li class="mb-4 flex items-center">
             <svg class="h-6 w-6 text-[#289DD2] mr-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
               stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -59,7 +60,7 @@
               </path>
               <rect x="9" y="3" width="6" height="4" rx="2"></rect>
             </svg>
-            <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Daily Time Record">DTR</a>
+            <a href="#studs" class="hover:text-gray-600" title="Working Students">Working Scholars</a>
           </li>
 
           <!-- Tasks -->
@@ -73,104 +74,66 @@
                   d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 2h14v14H5zm11.95 4.795a1 1 0 1 0-1.414-1.414l-4.95 4.95l-2.121-2.121a1 1 0 0 0-1.415 1.414l2.758 2.758a1.1 1.1 0 0 0 1.556 0z" />
               </g>
             </svg>
-            <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Tasks">Tasks</a>
+            <a href="#tasks" class="hover:text-gray-600" title="Tasks">Tasks</a>
           </li>
 
-          <!-- Payroll -->
-          <li class="mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <rect width="24" height="24" fill="none" />
-              <g fill="none">
-                <path stroke="#289DD2" stroke-width="1.5"
-                  d="M4.318 20.536C5.636 22 7.758 22 12 22s6.364 0 7.682-1.465C21 19.072 21 16.714 21 12s0-7.071-1.318-8.536S16.242 2 12 2S5.636 2 4.318 3.464C3 4.93 3 7.286 3 12s0 7.071 1.318 8.535Z" />
-                <path stroke="#289DD2" stroke-width="1.5"
-                  d="M7 8c0-.465 0-.697.051-.888a1.5 1.5 0 0 1 1.06-1.06C8.304 6 8.536 6 9 6h6c.465 0 .697 0 .888.051a1.5 1.5 0 0 1 1.06 1.06C17 7.304 17 7.536 17 8s0 .697-.051.888a1.5 1.5 0 0 1-1.06 1.06C15.697 10 15.464 10 15 10H9c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C7 8.696 7 8.464 7 8Z" />
-                <circle cx="8" cy="13" r="1" fill="#289DD2" />
-                <circle cx="8" cy="17" r="1" fill="#289DD2" />
-                <circle cx="12" cy="13" r="1" fill="#289DD2" />
-                <circle cx="12" cy="17" r="1" fill="#289DD2" />
-                <circle cx="16" cy="13" r="1" fill="#289DD2" />
-                <circle cx="16" cy="17" r="1" fill="#289DD2" />
-              </g>
-            </svg>
-            <a href="/src/tabs/student_dashboard/" class="hover:text-gray-600" title="Payroll">Payroll</a>
-          </li>
+        </ul>
 
+        <ul>
           <!-- Profile -->
-          <div class="bg-gray-100 flex justify-left items-center h-screen mb-12">
-            <ul class="mb-4 flex flex-col items-start">
-              <li class="mb-4 flex items-center relative">
-                <ul id="dropdown"
-                  class="absolute left-0 bottom-full mb-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg hidden">
-                  <li>
-                    <a href="/src/tabs/student_dashboard/student-profile.html"
-                      class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My
-                      Profile</a>
-                  </li>
-                  <li id="">
-                    <button id="logout-btn" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</button>
-                  </li>
-                  <!-- 
-                                    <li id="osasProfileLink">
-                                        <a href="tabs/osas-profile.html"
-                                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">OSAS Profile</a>
-                                    </li> -->
-                </ul>
+          <li class="mb-4 flex items-center">
+            <div class="bg-gray-100 flex justify-left">
+              <ul class="mb-4 flex flex-col items-start">
+                <li class="mb-4 flex items-center relative">
 
-                <button onclick="toggleDropdown()"
-                  class="flex items-center px-4 py-2 bg-transparent text-gray-500 hover:text-green-500 transition duration-300">
-                  <svg class="h-6 w-6 text-[#289DD2] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.87 0-7 3.13-7 7h14c0-3.87-3.13-7-7-7z" />
-                  </svg>
-                  <span>Profile</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <script>
-            const userRole = 'supervisor';
-            function toggleDropdown() {
-              const dropdown = document.getElementById('dropdown');
-              dropdown.classList.toggle('hidden');
-            }
-
-            if (userRole === 'student') {
-              const supervisorLink = document.getElementById('supervisorProfileLink', 'osasProfileLink');
-              supervisorLink.style.display = 'none';
-              osasProfileLink.style.display = 'none';
-            }
-
-            document.addEventListener('click', function (event) {
-              const dropdown = document.getElementById('dropdown');
-              const button = event.target.closest('button');
-              const dropdownContainer = event.target.closest('#dropdown');
-
-              if (!button && !dropdownContainer) {
-                dropdown.classList.add('hidden');
-              }
-            });
-          </script>
+                  <button id="logout-btn"
+                    class="block px-4 py-2 w-full text-left text-gray-700 hover:bg-gray-100">Logout</button>
+                </li>
+              </ul>
+            </div>
+          </li>
 
         </ul>
       </nav>
     </aside>
 
     <!-- Main Section -->
-    <div class="flex-1 p-6">
+    <div class="flex-1 p-6 ml-64" id="home">
       <!-- Welcome Section -->
       <div class="bg-[#289dd2] text-white rounded-lg p-10 mb-6">
-        <h2 class="text-5xl font-bold" style="font-family: 'Baloo 2', sans-serif;">
-          Welcome <span id="supervisor-name">Supervisor</span>!
-        </h2>
-        <p id="welcome-message" class="text-lg mt-4"></p>
+        <div class="flex justify-between">
+          <div class="flex flex-col justify-center">
+            <h2 class="text-6xl font-bold" style="font-family: 'Baloo 2', sans-serif;">Welcome <span
+                id="supervisor-name">Supervisor</span>! 👋</h2>
+            <p class="text-xl mt-4" style="font-family: 'Baloo 2', sans-serif;" id="welcome-message">We're excited to
+              have you here. Let's make today a productive and successful one! 🎉</p>
+          </div>
+
+          <div>
+            <div class="max-w-sm w-full bg-white shadow-lg rounded-lg overflow-hidden">
+              <div class="p-6 text-center">
+                <h2 id="name" class="text-2xl font-semibold text-gray-700" style="font-family: 'Baloo 2', sans-serif;">
+                </h2>
+                <p id="department" class="text-sm text-gray-500"></p>
+              </div>
+              <div class="p-6 border-t">
+                <div class="flex items-center space-x-2 text-gray-600 mb-3">
+                  <i class="fas fa-envelope text-blue-500"></i>
+                  <span id="email" class="text-sm"></span>
+                </div>
+                <div class="flex items-center space-x-2 text-gray-600">
+                  <i class="fas fa-calendar-alt text-blue-500"></i>
+                  <span id="created_at" class="text-sm"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-
       <!-- WORKING SCHOLARS -->
-      <div class="bg-[#F2F1EC] p-6 rounded-lg shadow-md mb-6">
+      <div class="bg-[#F2F1EC] p-10 rounded-lg shadow-md mb-6" id="studs">
         <div class="grid grid-cols-2 gap-4">
           <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">Working
             Scholars
@@ -252,18 +215,103 @@
       </div>
 
 
-
       <!-- TASKS -->
-      <div class="bg-[#F2F1EC] p-6 rounded-lg shadow-md mb-6">
+      <div class="bg-[#F2F1EC] p-10 rounded-lg shadow-md mb-6" id="tasks">
         <div class="flex justify-between items-center mb-4">
           <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">
             Tasks</h3>
-          <button class="bg-[#289DD2] text-white px-4 py-2 rounded-lg">Add Task</button>
+          <!-- Add Task Button -->
+          <button class="bg-[#289DD2] text-white px-4 py-2 rounded-lg" id="addTaskButton">
+            Add Task
+          </button>
+
+
+          <div id="addTaskModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white p-6 rounded-lg w-2/3 shadow-lg">
+              <!-- Modal Header -->
+              <h3 class="text-2xl text-[#004A6D] font-bold mb-4" style="font-family: 'Baloo 2', sans-serif;">
+                Create New Task
+              </h3>
+          
+              <!-- Task Form -->
+              <form id="taskForm" class="space-y-4">
+                <!-- Task Description -->
+                <div>
+                  <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                  <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    required
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#004A6D] focus:border-[#004A6D]"
+                  />
+                </div>
+          
+                <!-- Deadline -->
+                <div>
+                  <label for="deadline" class="block text-sm font-medium text-gray-700">Deadline</label>
+                  <input
+                    type="date"
+                    id="deadline"
+                    name="deadline"
+                    required
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#004A6D] focus:border-[#004A6D]"
+                  />
+                </div>
+          
+                <!-- Priority -->
+                <div>
+                  <label for="priority" class="block text-sm font-medium text-gray-700">Priority</label>
+                  <select
+                    id="priority"
+                    name="priority"
+                    required
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#004A6D] focus:border-[#004A6D]"
+                  >
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                </div>
+          
+                <!-- Assign to Student -->
+                <div>
+                  <label for="assigned_to" class="block text-sm font-medium text-gray-700">Assign to Student</label>
+                  <select
+                    id="assigned_to"
+                    name="assigned_to"
+                    required
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#004A6D] focus:border-[#004A6D]"
+                  >
+                    <!-- Options will be dynamically added here -->
+                  </select>
+                </div>
+          
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 mt-4">
+                  <button
+                    type="button"
+                    id="closeModalButton"
+                    class="bg-gray-300 text-white p-2 rounded-lg hover:bg-gray-400"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-[#004A6D] text-white px-4 py-2 rounded-lg hover:bg-[#003653]"
+                  >
+                    Create Task
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+
         </div>
         <table class="w-full text-left">
           <thead>
             <tr>
-              <th class="py-2">Task</th>
               <th class="py-2">Description</th>
               <th class="py-2">Deadline</th>
               <th class="py-2">Assigned To</th>
@@ -271,59 +319,12 @@
               <th class="py-2">Status</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="py-2">
-                <div class="bg-white p-4 rounded-lg">Do this task</div>
-              </td>
-              <td class="py-2">
-                <div class="bg-white p-4 rounded-lg">The quick brown fox jumps over the lazy dog.</div>
-              </td>
-              <td class="py-2">
-                <div class="bg-white p-4 rounded-lg">11/19/2024</div>
-              </td>
-              <td class="py-2">
-                <div class="bg-white p-4 rounded-lg">Person 1</div>
-              </td>
-              <td class="py-2">
-                <div class="bg-[#F2F1EC] p-4 rounded-lg">
-                  <span class="bg-red-500 text-white px-2 py-1 rounded">High</span>
-                </div>
-              </td>
-              <td class="py-2">
-                <div class="bg-[#F2F1EC] p-4 rounded-lg flex items-center justify-between">
-                  <span class="bg-orange-400 text-white px-2 py-1 rounded">Undone</span>
-                  <button class="bg-[#289DD2] text-white px-2 py-1 rounded-lg text-xs">Edit</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="py-2">
-                <div class="bg-white p-4 rounded-lg">Do this task</div>
-              </td>
-              <td class="py-2">
-                <div class="bg-white p-4 rounded-lg">The quick brown fox jumps over the lazy dog.</div>
-              </td>
-              <td class="py-2">
-                <div class="bg-white p-4 rounded-lg">11/19/2024</div>
-              </td>
-              <td class="py-2">
-                <div class="bg-white p-4 rounded-lg">Person 2</div>
-              </td>
-              <td class="py-2">
-                <div class="bg-[#F2F1EC] p-4 rounded-lg">
-                  <span class="bg-red-500 text-white px-2 py-1 rounded">High</span>
-                </div>
-              </td>
-              <td class="py-2">
-                <div class="bg-[#F2F1EC] p-4 rounded-lg">
-                  <span class="bg-green-500 text-white px-2 py-1 rounded">Done</span>
-                </div>
-              </td>
-            </tr>
+          <tbody id="task-list">
+            <!-- Dynamically generated rows will appear here -->
           </tbody>
         </table>
       </div>
+
 
 
 
@@ -332,6 +333,10 @@
 
     </div>
   </div>
+
+  <!-- jQuery and Bootstrap Modal Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
 
@@ -357,6 +362,7 @@
     // Get the supervisor's ID and Role from the cookies
     var supervisorId = getCookie("supervisor_id");
     var supervisorRole = getCookie("supervisor_role");
+    var studentsOfSupervisor;
 
 
     $(document).ready(function () {
@@ -373,8 +379,12 @@
             $('#role').text(data.role);
             $('#department').text(data.department);  // Assuming you have a department field in the response
 
+            // Populate the profile data using jQuery
+            $("#name").text(`${data.first_name} ${data.last_name}`);
+            $("#created_at").text(`Created At: ${new Date(data.created_at).toLocaleString()}`);
 
-            const supervisorName = data.first_name + ' ' + data.last_name;
+
+            const supervisorName = data.first_name;
 
             // Update the DOM with the supervisor's name and a welcome message
             $('#supervisor-name').text(supervisorName);
@@ -395,7 +405,7 @@
 
 
 
-      // GET STUDENTS// GET STUDENTS
+      // GET STUDENTS
       $.ajax({
         url: 'http://127.0.0.1:8000/api/supervisor/students', // Adjust this route if needed
         type: 'POST',
@@ -404,6 +414,7 @@
         },
         success: function (response) {
           const students = response.data; // Assuming the response has a "data" key with the students
+          studentsOfSupervisor = students;
 
           // Clear both containers for on duty and off duty students
           $('#on-duty-container').empty();
@@ -449,23 +460,35 @@
                   offDuty.push(student);
 
 
+                  if (timeLogs.length === 0) {
+                    // Create the Off Duty student div with the formatted times
+                    const studentDiv = `
+                    <div class="bg-white text-[#289DD2] p-4 rounded-lg text-center">
+                      <img alt="Person image" class="mx-auto mb-2 rounded-full" height="50" src="assets/default.jpg" width="50" />
+                      <p class="font-bold">${student.first_name} ${student.last_name}</p>
+                      <p class="font-normal">Last Duty Date: No Duties on record</p> <!-- Display the last duty date -->
+                    </div>
+                  `;
 
-                  // Get the latest time log (last one in the array)
-                  const lastTimeLog = timeLogs[0];
+                    // Append the student div to the "Off Duty" container
+                    $('#off-duty-container').append(studentDiv);
+                  } else {
+                    // Get the latest time log (last one in the array)
+                    const lastTimeLog = timeLogs[0];
 
-                  // Extract the date, check-in time, and check-out time
-                  const checkInDate = new Date(lastTimeLog.check_in);
-                  const checkInTime = checkInDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    // Extract the date, check-in time, and check-out time
+                    const checkInDate = new Date(lastTimeLog.check_in);
+                    const checkInTime = checkInDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-                  // If check_out is not null, format the check-out time
-                  const checkOutTime = lastTimeLog.check_out ? new Date(lastTimeLog.check_out).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "Not yet checked out";
+                    // If check_out is not null, format the check-out time
+                    const checkOutTime = lastTimeLog.check_out ? new Date(lastTimeLog.check_out).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "Not yet checked out";
 
-                  // Extract the date from check_in for the last duty date
-                  const dutyDate = checkInDate.toLocaleDateString(); // This will show the date (e.g., 12/07/2024)
+                    // Extract the date from check_in for the last duty date
+                    const dutyDate = checkInDate.toLocaleDateString(); // This will show the date (e.g., 12/07/2024)
 
 
-                  // Create the Off Duty student div with the formatted times
-                  const studentDiv = `
+                    // Create the Off Duty student div with the formatted times
+                    const studentDiv = `
                     <div class="bg-white text-[#289DD2] p-4 rounded-lg text-center">
                       <img alt="Person image" class="mx-auto mb-2 rounded-full" height="50" src="assets/default.jpg" width="50" />
                       <p class="font-bold">${student.first_name} ${student.last_name}</p>
@@ -474,9 +497,9 @@
                     </div>
                   `;
 
-                  // Append the student div to the "Off Duty" container
-                  $('#off-duty-container').append(studentDiv);
-
+                    // Append the student div to the "Off Duty" container
+                    $('#off-duty-container').append(studentDiv);
+                  }
                 }
 
                 // if (onDuty.length === 0) {
@@ -626,7 +649,7 @@
         success: function (response) {
           const students = []; // Assuming response has a "data" key with the list of students
 
-          
+
           response.data.map((stud) => {
             console.log(stud, supervisorId)
             if (stud.supervisor_id == supervisorId) {
@@ -664,27 +687,27 @@
             $('.remove-student-btn').click(function () {
               const studentId = $(this).data('student-id');
 
-              
-                // Send AJAX request to update supervisor
-                $.ajax({
-                  url: `http://127.0.0.1:8000/api/students/${studentId}/remove-supervisor`,
-                  type: 'PUT',
-                  contentType: 'application/json',
-                  data: JSON.stringify({
-                    supervisor_id: supervisorId
-                  }),
 
-                  success: function (response) {
-                    alert(`Student removed successfully.`);
-                    // Optionally, refresh the student list or close the modal
-                    $(`#add-student-btn[data-student-id="${studentId}"]`).parent().remove();
-                    window.location.reload()
-                  },
-                  error: function (xhr, status, error) {
-                    console.error('Error assigning supervisor:', error);
-                    alert('Failed to assign supervisor. Please try again.');
-                  }
-                });
+              // Send AJAX request to update supervisor
+              $.ajax({
+                url: `http://127.0.0.1:8000/api/students/${studentId}/remove-supervisor`,
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  supervisor_id: supervisorId
+                }),
+
+                success: function (response) {
+                  alert(`Student removed successfully.`);
+                  // Optionally, refresh the student list or close the modal
+                  $(`#add-student-btn[data-student-id="${studentId}"]`).parent().remove();
+                  window.location.reload()
+                },
+                error: function (xhr, status, error) {
+                  console.error('Error assigning supervisor:', error);
+                  alert('Failed to assign supervisor. Please try again.');
+                }
+              });
 
             });
           }
@@ -708,6 +731,182 @@
       }
     });
 
+
+
+
+
+
+
+
+
+
+    // GET TASKS
+
+
+    // Function to dynamically generate task rows
+    function generateTaskRows(tasks) {
+      $('#task-list').empty(); // Clear existing rows
+
+      tasks.forEach(task => {
+        // Set colors based on priority and status
+        let priorityColor = '';
+        let statusColor = '';
+        let statusBgColor = '';
+
+        // Priority color logic
+        switch (task.priority) {
+          case 'High':
+            priorityColor = 'bg-red-500'; // Red for High priority
+            break;
+          case 'Medium':
+            priorityColor = 'bg-yellow-500'; // Yellow for Medium priority
+            break;
+          case 'Low':
+            priorityColor = 'bg-green-500'; // Green for Low priority
+            break;
+          default:
+            priorityColor = 'bg-gray-500'; // Default for no priority
+            break;
+        }
+
+        // Status color logic
+        switch (task.status) {
+          case 'Completed':
+            statusColor = 'bg-green-500'; // Green for Completed
+            statusBgColor = 'text-white'; // White text for green
+            break;
+          case 'Pending':
+            statusColor = 'bg-yellow-500'; // Yellow for Pending
+            statusBgColor = 'text-white'; // White text for yellow
+            break;
+          default:
+            statusColor = 'bg-gray-500'; // Default color for other status
+            statusBgColor = 'text-white';
+            break;
+        }
+
+        // Create the row with dynamically generated colors
+        const row = `
+        <tr>
+          <td class="py-2">
+            <div class="bg-white p-4 rounded-lg">${task.description}</div>
+          </td>
+          <td class="py-2">
+            <div class="bg-white p-4 rounded-lg">${task.deadline}</div>
+          </td>
+          <td class="py-2">
+            <div class="bg-white p-4 rounded-lg">${task.assigned_to.first_name} ${task.assigned_to.last_name}</div>
+          </td>
+          <td class="py-2">
+            <div class="bg-[#F2F1EC] p-4 rounded-lg">
+              <span class="${priorityColor} text-white px-2 py-1 rounded">${task.priority}</span>
+            </div>
+          </td>
+          <td class="py-2">
+            <div class="bg-[#F2F1EC] p-4 rounded-lg">
+              <span class="${statusColor} ${statusBgColor} px-2 py-1 rounded">${task.status}</span>
+            </div>
+          </td>
+        </tr>
+      `;
+        $('#task-list').append(row); // Add the row to the table
+      });
+    }
+
+    // Function to fetch task data from API
+    function fetchTasks() {
+      $.ajax({
+        url: `http://127.0.0.1:8000/api/tasks?supervisor_id=${supervisorId}`,
+        method: 'GET',
+        success: function (response) {
+          if (response) {
+            generateTaskRows(response); // Pass the fetched tasks to the row generator
+          } else {
+            console.error('No tasks data available.');
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error('Error fetching tasks:', error);
+        }
+      });
+    }
+
+    // Call the function to fetch and display tasks
+    fetchTasks();
+
+
+
+
+
+
+    // CREATE TASKS
+    // Fetch the list of students
+
+    $(document).ready(function () {
+
+      $.ajax({
+        url: 'http://127.0.0.1:8000/api/supervisor/students', // Adjust this route if needed
+        type: 'POST',
+        data: {
+          supervisor_id: supervisorId
+        },
+        success: function (response) {
+          const students = response.data;
+          const studentSelect = $('#assigned_to');
+          students.map(student => {
+            studentSelect.append(new Option(`${student.first_name} ${student.last_name}`, student.id));
+          });
+
+        },
+        error: function (xhr, status, error) {
+          // Handle error
+          console.error("Error fetching students:", error);
+        }
+      })
+
+
+      // Show the modal when the button is clicked
+      $('#addTaskButton').click(function () {
+        $('#addTaskModal').show(); // Display modal by changing display to block
+      });
+
+      // Close the modal when the close button is clicked
+      $('#closeModalButton').click(function () {
+        $('#addTaskModal').hide(); // Hide modal by changing display to none
+      });
+
+      // Handle form submission
+      $('#taskForm').submit(function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get form data
+        const taskData = {
+          description: $('#description').val(),
+          deadline: $('#deadline').val(),
+          priority: $('#priority').val(),
+          status: "Pending",
+          assigned_to: $('#assigned_to').val(),
+          assigned_by: supervisorId // Use the actual supervisor ID
+        };
+
+        // Send POST request to create the task
+        $.ajax({
+          url: "http://127.0.0.1:8000/api/tasks",
+          method: "POST",
+          data: taskData,
+          success: function (response) {
+            if (response) {
+              alert('Task created successfully!');
+              $('#addTaskModal').hide(); // Hide the modal after success
+              window.location.reload()
+            }
+          },
+          error: function (xhr, status, error) {
+            alert('Error creating task: ' + error);
+          }
+        });
+      });
+    })
   </script>
 
 </body>

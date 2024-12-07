@@ -85,8 +85,6 @@
                     document.cookie = "supervisor_id=" + response.data.id + "; path=/; SameSite=Lax";
                     document.cookie = "supervisor_role=" + response.data.role + "; path=/; SameSite=Lax";
                     
-                    // Show success message and redirect
-                    alert('Login successful!');
                     window.location.href = "/src/tabs/supervisor_dashboard/"; // Redirect to the dashboard
                 },
                 error: function (xhr, status, error) {
