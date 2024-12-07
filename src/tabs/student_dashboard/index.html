@@ -321,10 +321,10 @@
                         const listItem = document.createElement('li');
                         listItem.classList.add('mb-2', 'p-2', 'border-b');
                         listItem.innerHTML = `
-                <strong>${checkInDate}</strong><br>
-                <span>${checkInTime} - ${checkOutTime || "Not logged out"}</span><br>
-                <span class="text-green-500">${checkOutTime ? total_hours_worked : "Ongoing"} hours worked</span>
-            `;
+                            <strong>${checkInDate}</strong><br>
+                            <span>${checkInTime} - ${checkOutTime || "Not logged out"}</span><br>
+                            <span class="text-green-500">${checkOutTime ? total_hours_worked : "Ongoing"} hours worked</span>
+                        `;
                         timeLogsList.appendChild(listItem);
                     });
                 })

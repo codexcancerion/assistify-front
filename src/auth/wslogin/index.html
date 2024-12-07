@@ -39,7 +39,29 @@
         </div>
     </div>
 
+    
     <script>
+        // Function to get a cookie value by name
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(';');
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookie = cookieArr[i].trim();
+                if (cookie.indexOf(name + '=') === 0) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        // Retrieve the student ID from the cookies
+        const studentId = getCookie('student_id');
+
+        if (studentId) {
+            // No student_id found, redirect to wslogin page
+            window.location.href = '/src/router.html';
+        } 
+
+
         $(document).ready(function () {
             $('#student-login-form').on('submit', function (e) {
                 e.preventDefault(); // Prevent the form from refreshing the page

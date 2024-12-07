@@ -206,6 +206,10 @@
                     // Populate the student's data on the page
                     studentData = data;
                     $('#student-name').text(data.first_name);
+                    if (data.supervisor_id) {
+                        // Redirect to student_dashboard if a supervisor is assigned
+                        window.location.href = '/src/tabs/student_dashboard';
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);

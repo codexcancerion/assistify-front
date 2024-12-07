@@ -38,6 +38,26 @@
 
     <script>
         
+        // Function to get a cookie value by name
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(';');
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookie = cookieArr[i].trim();
+                if (cookie.indexOf(name + '=') === 0) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        // Retrieve the student ID from the cookies
+        const supervisorId = getCookie('supervisor_id');
+
+        if (supervisorId) {
+            // No student_id found, redirect to wslogin page
+            window.location.href = '/src/tabs/supervisor_dashboard';
+        } 
+
 
 
         // Handle login form submission
