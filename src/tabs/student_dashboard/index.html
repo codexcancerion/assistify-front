@@ -296,6 +296,15 @@
     </div>
 
     <script>
+
+        // Convert decimal hours to hh:mm format
+        function formatHoursToTime(decimalHours) {
+            const hours = Math.floor(decimalHours);
+            const minutes = Math.round((decimalHours - hours) * 60);
+            return `${hours}h ${minutes}m`;
+        }
+
+
         $(document).ready(function () {
 
             $('#logout-btn').on('click', function () {
@@ -376,7 +385,7 @@
                         listItem.innerHTML = `
                             <strong>${checkInDate}</strong><br>
                             <span>${checkInTime} - ${checkOutTime || "Not logged out"}</span><br>
-                            <span class="text-green-500">${checkOutTime ? total_hours_worked : "Ongoing"} hours worked</span>
+                            <span class="text-green-500">${checkOutTime ? formatHoursToTime(total_hours_worked) : "Ongoing"} hours worked</span>
                         `;
                         timeLogsList.appendChild(listItem);
                     });
@@ -575,7 +584,7 @@
                         const totalPayroll = totalHours * 50;
 
                         // Update the HTML with calculated values
-                        $('#totalHours').text(`${totalHours} h.`);  // Display total hours worked
+                        $('#totalHours').text(`${formatHoursToTime(totalHours)}`);  // Display total hours worked
                         $('#totalPayroll').text(`₱${totalPayroll.toFixed(2)}`);  // Display the calculated payroll
                     },
                     error: function (xhr, status, error) {
