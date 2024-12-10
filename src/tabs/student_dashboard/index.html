@@ -152,58 +152,6 @@
                                     <span id="created_at" class="text-sm"></span>
                                 </div>
                             </div>
-                            <!-- Edit Button -->
-                            <div class="p-6 border-t text-center">
-                                <button id="edit-profile-btn"
-                                    class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
-                                    Edit Profile
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- Edit Profile Modal -->
-                    <div id="edit-profile-modal"
-                        class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center hidden">
-                        <div class="bg-white p-6 rounded-lg w-1/3 shadow-lg">
-                            <h3 class="text-2xl text-[#004A6D] font-bold mb-4">Edit Profile</h3>
-
-                            <!-- Edit Form -->
-                            <form id="edit-profile-form">
-                                <div class="mb-4">
-                                    <label for="edit-name" class="block text-gray-700">Name</label>
-                                    <input type="text" id="edit-name" name="name"
-                                        class="w-full p-2 border border-gray-300 rounded-lg" />
-                                </div>
-                                <div class="mb-4">
-                                    <label for="edit-email" class="block text-gray-700">Email</label>
-                                    <input type="email" id="edit-email" name="email"
-                                        class="w-full p-2 border border-gray-300 rounded-lg" />
-                                </div>
-                                <div class="mb-4">
-                                    <label for="edit-department" class="block text-gray-700">Department</label>
-                                    <input type="text" id="edit-department" name="department"
-                                        class="w-full p-2 border border-gray-300 rounded-lg" />
-                                </div>
-                                <div class="mb-4">
-                                    <label for="edit-supervisor" class="block text-gray-700">Supervisor</label>
-                                    <input type="text" id="edit-supervisor" name="supervisor"
-                                        class="w-full p-2 border border-gray-300 rounded-lg" />
-                                </div>
-
-                                <div class="flex justify-between">
-                                    <button type="button" id="cancel-edit-btn"
-                                        class="bg-gray-300 text-white py-2 px-4 rounded-lg hover:bg-gray-400">
-                                        Cancel
-                                    </button>
-                                    <button type="submit" id="save-edit-btn"
-                                        class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
-                                        Save Changes
-                                    </button>
-                                </div>
-                            </form>
                         </div>
                     </div>
 
@@ -601,68 +549,6 @@
 
 
 
-
-
-        // EDIT MODAL
-        $(document).ready(function () {
-            // Show the Edit Profile modal when the "Edit Profile" button is clicked
-            $('#edit-profile-btn').click(function () {
-                // Pre-fill the form with current profile data
-                $('#edit-name').val($('#name').text());
-                $('#edit-email').val($('#email').text());
-                $('#edit-department').val($('#department').text());
-                $('#edit-supervisor').val($('#supervisor_id').text());
-
-                // Show the modal
-                $('#edit-profile-modal').removeClass('hidden');
-            });
-
-            // Close the modal when the "Cancel" button is clicked
-            $('#cancel-edit-btn').click(function () {
-                $('#edit-profile-modal').addClass('hidden');
-            });
-
-            // Close the modal if clicked outside the modal area
-            $(window).click(function (event) {
-                if ($(event.target).is('#edit-profile-modal')) {
-                    $('#edit-profile-modal').addClass('hidden');
-                }
-            });
-
-            // Handle form submission to save changes
-            $('#edit-profile-form').submit(function (event) {
-                event.preventDefault();
-
-                // Collect the data from the form
-                const updatedProfile = {
-                    name: $('#edit-name').val(),
-                    email: $('#edit-email').val(),
-                    department: $('#edit-department').val(),
-                    supervisor: $('#edit-supervisor').val()
-                };
-
-                // You can send this data to your backend using an AJAX request (example below)
-                $.ajax({
-                    url: 'http://127.0.0.1:8000/api/students/update',  // Update with the appropriate API endpoint
-                    type: 'PUT',
-                    data: updatedProfile,
-                    success: function (response) {
-                        // Assuming the response contains the updated student data
-                        // Update the profile card with the new information
-                        $('#name').text(response.name);
-                        $('#email').text(response.email);
-                        $('#department').text(response.department);
-                        $('#supervisor_id').text(response.supervisor);
-
-                        // Close the modal
-                        $('#edit-profile-modal').addClass('hidden');
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error saving profile:', error);
-                    }
-                });
-            });
-        });
 
     </script>
 
